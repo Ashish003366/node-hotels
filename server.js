@@ -3,6 +3,9 @@ import db from './db.js';
 import bodyParser from 'body-parser';
 import person from './routes/personRoutes.js'
 import menu from './routes/menuRoutes.js'
+import dotenv from 'dotenv';
+dotenv.config();
+const Port = process.env.PORT || 3000;
 
 const app = express()
 app.use(bodyParser.json());
@@ -14,4 +17,4 @@ app.get('/', (req, res) => {
 
 app.use('/', person);
 app.use('/menu', menu);
-app.listen(3000)
+app.listen(Port)
