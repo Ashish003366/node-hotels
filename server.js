@@ -5,7 +5,7 @@ import person from './routes/personRoutes.js'
 import menu from './routes/menuRoutes.js'
 import dotenv from 'dotenv';
 dotenv.config();
-const Port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 const app = express()
 app.use(bodyParser.json());
@@ -17,4 +17,6 @@ app.get('/', (req, res) => {
 
 app.use('/', person);
 app.use('/menu', menu);
-app.listen(Port)
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
