@@ -6,22 +6,22 @@ dotenv.config();
 //const mongourl = process.env.mongodbURLLocal //local server
 const mongourl = process.env.mongodbURL // online server
 // setup mongoDB connection
-mongoose.connect(mongourl,{
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
+mongoose.connect(mongourl)
 
 const db =mongoose.connection;
 
-db.on('connected', ()=>{
-    console.log("connected to mongoDB server");
-})
 
-db.on('disconnected', ()=>{
-    console.log("disconnected to mongoDB server",err);
-})
-db.on('error', (err)=>{
-    console.log("error to mongoDB server");
-})
+db.on('connected', () => {
+    console.log("✅ Connected to MongoDB server");
+});
+
+db.on('disconnected', () => {
+    console.log("⚠️ Disconnected from MongoDB server");
+});
+
+db.on('error', (err) => {
+    console.error("❌ MongoDB connection error:", err);
+});
+
 
 export default db;
